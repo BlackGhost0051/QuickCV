@@ -1,1 +1,5 @@
 # QuickCV
+
+```
+npm install
+```
