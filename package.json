@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/BlackGhost0051/QuickCV/issues"
   },
-  "homepage": "https://github.com/BlackGhost0051/QuickCV#readme"
+  "homepage": "https://github.com/BlackGhost0051/QuickCV#readme",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
 }
