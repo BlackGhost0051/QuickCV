@@ -1,6 +1,7 @@
 import express from 'express';
 import {config} from "./config";
 import Controller from "./interfaces/controller.interface";
+import bodyParser from "body-parser";
 
 
 class App{
@@ -8,6 +9,8 @@ class App{
 
     constructor(controllers: Controller[]) {
         this.app = express();
+
+        this.initializeMiddlewares();
         this.initializeControllers(controllers);
     }
 
@@ -15,6 +18,10 @@ class App{
         controllers.forEach((controller) => {
             this.app.use('/', controller.router);
         });
+    }
+
+    private initializeMiddlewares(): void{
+        this.app.use(bodyParser.json());
     }
 
     public listen(): void {
