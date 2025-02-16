@@ -1,16 +1,26 @@
+import fs from "fs";
 import sqlite3 from "sqlite3";
 import { open, Database } from "sqlite";
+import PasswordService from "./password.service";
 
 
 class DatabaseService {
     private db: Database | null = null;
+    private databasePath: string = "./lib/database";
+    private passwordService: PasswordService;
 
-    constructor() {}
+    constructor() {
+        this.passwordService = new PasswordService();
+    }
 
     async connect(){
         try{
+            if(!fs.existsSync(this.databasePath)){
+                fs.mkdirSync(this.databasePath, { recursive: true});
+            }
+
             this.db = await open({
-                filename: './test-database.db',
+                filename: `${this.databasePath}/database.db`,
                 driver: sqlite3.Database
             });
 
@@ -30,19 +40,38 @@ class DatabaseService {
 
 
 
-    async addUser(){
+    async addUser(login: string, password: string){
+        try{
+            const hashedPassword = await this.passwordService.hashPassword(password);
 
+            const result = await this.db?.run(
+                `INSERT INTO users (login, password) VALUES (?, ?)`, [login, hashedPassword]
+            );
+
+            console.log('User added:', result);
+        } catch (error){
+            console.error("Error adding user:", error);
+        }
     }
 
     async getUserByLogin(login: string){
+        try{
+            const user = await this.db?.get(
+                `SELECT * FROM users WHERE login = ?`, [login]
+            );
+
+            return user || null;
+        } catch (error){
+            console.error("Error fetching user by login:", error);
+            throw error;
+        }
+    }
+
+    async updateUser(login: string, password: string){
 
     }
 
     async deleteUser(login: string){
-
-    }
-
-    async changePassword(login: string){
 
     }
 

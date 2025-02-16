@@ -1,10 +1,10 @@
 import bcrypt from 'bcrypt';
 
 class PasswordService{
-    private saltRounds: number = 10;
 
     async hashPassword(password: string): Promise<string> {
-        const hashedPassword = await bcrypt.hash(password, this.saltRounds);
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
         return hashedPassword;
     }
 
