@@ -29,3 +29,5 @@ class UserController implements Controller{
 
     }
 }
+
+export default UserController;
