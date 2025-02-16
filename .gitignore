@@ -49,3 +49,7 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+
+# Backend
+/Backend/lib/database/*
