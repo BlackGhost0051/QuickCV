@@ -14,23 +14,12 @@ class UserController implements Controller{
     }
 
     private initializeRoutes() {
-        this.router.get(`/test`, this.test.bind(this));
-
         this.router.post(`${this.path}/auth`, this.authenticate);
         this.router.post(`${this.path}/register`, this.register.bind(this));
 
         this.router.patch(`${this.path}/change-password`, this.changePassword);
     }
 
-    private async test(request: Request, responce: Response){
-        try{
-
-            await this.dbService.connect();
-            responce.status(200).send('Database connection successful!');
-        } catch (error){
-            responce.status(500).send(`Failed to connect to the database : ${error}`);
-        }
-    }
 
     private authenticate(){
 
