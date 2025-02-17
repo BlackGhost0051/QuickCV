@@ -11,6 +11,7 @@ class UserController implements Controller{
 
     constructor() {
         this.dbService = new DatabaseService();
+        this.passwordService = new PasswordService();
         this.initializeRoutes();
     }
 
