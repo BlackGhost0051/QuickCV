@@ -68,11 +68,29 @@ class DatabaseService {
     }
 
     async updateUser(login: string, password: string){
+        try {
+            const hashedPassword = await this.passwordService.hashPassword(password);
 
+            const result = await this.db?.run(
+                `UPDATE users SET password = ? WHERE login = ?`, [hashedPassword, login]
+            );
+
+            console.log('User updated:', result);
+        } catch (error) {
+            console.error("Error updating user:", error);
+        }
     }
 
     async deleteUser(login: string){
+        try{
+            const result = await this.db?.run(
+                `DELETE FROM users WHERE login = ?`, [login]
+            );
 
+            console.log('User deleted:', result);
+        } catch (error){
+            console.error("Error deleting user:", error);
+        }
     }
 
 }
