@@ -2,6 +2,7 @@ import Controller from "../interfaces/controller.interface";
 import {Request, Response, Router} from "express";
 import DatabaseService from "../modules/services/database.service";
 import PasswordService from "../modules/services/password.service";
+import logRequestMiddleware from "../middlewares/logRequest.middleware";
 
 class UserController implements Controller{
     public path = '/user';
@@ -12,6 +13,7 @@ class UserController implements Controller{
     constructor() {
         this.dbService = new DatabaseService();
         this.passwordService = new PasswordService();
+        this.router.use(logRequestMiddleware);
         this.initializeRoutes();
     }
 
