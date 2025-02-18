@@ -32,6 +32,7 @@ class UserController implements Controller{
 
 
         try{
+            await this.dbService.connect();
             const user = await this.dbService.getUserByLogin(login);
 
             if (!user) {

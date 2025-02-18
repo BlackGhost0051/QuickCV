@@ -93,6 +93,18 @@ class DatabaseService {
         }
     }
 
+    async isAdmin(login: string): Promise<boolean>{
+        try{
+            const result = await this.db?.get(
+                `SELECT * FROM users WHERE login = ? AND isAdmin = 1`, [login]
+            );
+
+            return !!result;
+        } catch (error) {
+            console.error("Error checking admin status:", error);
+            return false;
+        }
+    }
 }
 
 export default DatabaseService;
