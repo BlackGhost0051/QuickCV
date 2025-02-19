@@ -3,16 +3,20 @@ import {Request, Response, Router} from "express";
 import DatabaseService from "../modules/services/database.service";
 import PasswordService from "../modules/services/password.service";
 import logRequestMiddleware from "../middlewares/logRequest.middleware";
+import JwtService from "../modules/services/jwt.service";
 
 class UserController implements Controller{
     public path = '/user';
     public router = Router();
     private dbService: DatabaseService;
     private passwordService: PasswordService;
+    private jwtService: JwtService;
 
     constructor() {
         this.dbService = new DatabaseService();
         this.passwordService = new PasswordService();
+        this.jwtService = new JwtService();
+
         this.router.use(logRequestMiddleware);
         this.initializeRoutes();
     }
@@ -47,6 +51,13 @@ class UserController implements Controller{
                 return response.status(401).send("Invalid credentials.");
             }
 
+            const token = this.jwtService.generateToken(login);
+            console.log("Token = " + token);
+
+            // const decoded = this.jwtService.verifyToken(token);
+            // console.log("Decode login = " + decoded.login);
+
+            response.cookie("token", token, { httpOnly: true, secure: true });
             response.status(200).send("Authentication successful!");
         } catch (error){
             response.status(500).send(`Error during authentication: ${error}`);
