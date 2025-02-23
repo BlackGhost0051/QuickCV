@@ -6,6 +6,13 @@
 
 ## Run
 
+
+### Backend
 ```
-npm install
+cd Backend
+```
+
+
+```
+npm run watch
 ```
