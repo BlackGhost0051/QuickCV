@@ -31,7 +31,7 @@ class DatabaseService {
                   password TEXT NOT NULL,
                   isAdmin INTEGER DEFAULT 0
                 );
-            `);
+            `); // email | profile info
         } catch (error){
             console.error("Error connecting to the database:", error);
         }
