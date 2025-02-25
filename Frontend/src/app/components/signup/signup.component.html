@@ -1,1 +1,19 @@
-<p>signup works!</p>
+<div class="signup-container">
+  <div class="signup-form">
+    <h2>Sign up</h2>
+    <hr>
+    <form action="post" autocomplete="off" method="POST">
+      <div class="form-group">
+        <input type="text" name="username" placeholder="Username" title="Username" class="form-control">
+      </div>
+
+      <div class="form-group">
+        <input type="password" name="password" placeholder="Password" title="Password" class="form-control">
+      </div>
+
+      <button type="submit" title="Sign up" class="submit-btn">Sign up</button>
+
+      <a href="#" [routerLink]="['/login']">Sing in</a>
+    </form>
+  </div>
+</div>

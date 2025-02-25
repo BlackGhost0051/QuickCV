@@ -1,15 +1,19 @@
-<div>
-  <h2>Login</h2>
-  <hr>
-  <form action="post" autocomplete="off" method="POST">
-    <div>
-      <input type="text" name="username" placeholder="Nazwa" title="Login">
-    </div>
+<div class="login-container">
+  <div class="login-form">
+    <h2>Login</h2>
+    <hr>
+    <form action="post" autocomplete="off" method="POST">
+      <div class="form-group">
+        <input type="text" name="username" placeholder="Username" title="Username" class="form-control">
+      </div>
 
-    <div>
-      <input type="password" class="form-control" name="password" placeholder="Password" title="Password">
-    </div>
+      <div class="form-group">
+        <input type="password" name="password" placeholder="Password" title="Password" class="form-control">
+      </div>
 
-    <button type="submit" title="Sign in">Sign in</button>
-  </form>
+      <button type="submit" title="Sign in" class="submit-btn">Sign in</button>
+
+      <a href="#" [routerLink]="['/signup']">Sing up</a>
+    </form>
+  </div>
 </div>
