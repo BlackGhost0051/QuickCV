@@ -14,8 +14,9 @@
 
   padding: 1.5ex 2ex 1.5ex 2ex;
   font-size: 2.5ex;
-
   border-radius: 2ex;
+
+  transition: background-color 0.3s ease;
 }
 
 .home-generate-cv-container button:hover {
