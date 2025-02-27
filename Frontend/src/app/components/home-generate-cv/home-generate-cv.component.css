@@ -2,4 +2,30 @@
   padding: 5ex;
   display: flex;
   justify-content: center;
+  align-items: center;
+
+  background: #000000;
+}
+
+.home-generate-cv-container button{
+  border: none;
+  background: #9a0046;
+  color: #fff;
+
+  padding: 1.5ex 2ex 1.5ex 2ex;
+  font-size: 2.5ex;
+
+  border-radius: 2ex;
+}
+
+.home-generate-cv-container button:hover {
+  background: rgba(58, 0, 23, 0.8);
+}
+
+
+.home-generate-cv-container .vertical-line{
+  border: none;
+  border-left: 2px solid #ffffff;
+  height: 6ex;
+  margin: 0 2ex 0 2ex;
 }

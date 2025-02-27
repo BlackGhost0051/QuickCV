@@ -4,7 +4,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavbarComponent]  ,
+  imports: [
+    RouterOutlet,
+    NavbarComponent,
+  ],
   templateUrl: './app.component.html',
   standalone: true,
   styleUrl: './app.component.css'
