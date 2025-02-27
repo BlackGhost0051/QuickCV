@@ -65,3 +65,8 @@
 .submit-btn:hover {
   background-color: rgba(58, 0, 23, 0.8);;
 }
+
+.signup-form a{
+  color: white;
+  text-decoration: none;
+}
