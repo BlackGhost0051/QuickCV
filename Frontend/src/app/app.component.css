@@ -1,6 +1,6 @@
 .background {
-  /*background: url('/assets/image/background.jpg');*/
-  background: url('/assets/image/e.gif');
+  background: url('/assets/image/background.jpg');
+  /*background: url('/assets/image/e.gif');*/
 
 
   /*background-color: #000000;*/
@@ -9,6 +9,8 @@
 
   background-size: cover;
   background-position: center;
+  background-attachment: scroll;
+  overflow-y: auto;
   height: 100vh;
   width: 100vw;
   font: 1rem "Fira Sans", sans-serif;

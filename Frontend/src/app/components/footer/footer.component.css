@@ -1,11 +1,11 @@
-footer{
+.footer-container{
   text-align: center;
   padding: 20px;
   background: #000000;
   color: white;
 }
 
-footer a{
+.footer-container a{
   color: white;
   text-decoration: none;
 }
