@@ -4,7 +4,14 @@
   </div>
   <ul class="navbar-links">
     <li><a class="navbar-link" href="#" [routerLink]="['/']">Home</a></li>
-    <li><a class="navbar-link" href="#" [routerLink]="['/login']">Login</a></li>
-    <li><a class="navbar-link" href="#" [routerLink]="['/signup']">Signup</a></li>
+
+
+    @if (isLogin){
+      <li><a class="navbar-link" href="#" [routerLink]="['/login']" (click)="changeButton()">Login</a></li>
+    } @else {
+      <li><a class="navbar-link" href="#" [routerLink]="['/signup']" (click)="changeButton()">Signup</a></li>
+    }
+
+
   </ul>
 </nav>
