@@ -18,6 +18,10 @@ class JwtService{
 
     verifyToken(token:string): JwtPayload{
         try {
+            if(token.startsWith('token=')){
+                token = token.slice(6, token.length);
+            }
+
             return jwt.verify(token, config.JwtSecret) as JwtPayload;
         } catch (error) {
             throw new Error('Invalid or expired token');

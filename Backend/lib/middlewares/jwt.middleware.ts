@@ -1,5 +1,8 @@
 import { Request, Response, NextFunction} from "express";
+import JwtService from "../modules/services/jwt.service";
 import jwt from "jsonwebtoken";
+
+const jwtService = new JwtService();
 
 const verifyToken = (request: Request, response: Response, next: NextFunction)=> {
     let token = request.headers['x-auth-token'] || request.headers['authorization'];
@@ -15,7 +18,11 @@ const verifyToken = (request: Request, response: Response, next: NextFunction)=>
 
         try{
             console.log("TOKEN ==== ", token);
-            // need verify token !!!
+
+
+            const decoded = jwtService.verifyToken(token);
+
+
             next();
         } catch (ex){
             return response.status(400).send('Invalid token.');
