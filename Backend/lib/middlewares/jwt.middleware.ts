@@ -14,8 +14,8 @@ const verifyToken = (request: Request, response: Response, next: NextFunction)=>
         }
 
         try{
-            console.log("TOKEN === ", token);
-
+            console.log("TOKEN ==== ", token);
+            // need verify token !!!
             next();
         } catch (ex){
             return response.status(400).send('Invalid token.');
