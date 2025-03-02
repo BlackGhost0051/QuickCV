@@ -18,7 +18,7 @@ class CvController implements Controller{
     }
 
     private initializeRoutes() {
-        this.router.get(`${this.path}/generate-pdf`, jwtMiddleware ,this.generate_pdf);
+        this.router.post(`${this.path}/generate-pdf`, jwtMiddleware ,this.generate_pdf);
 
         this.router.post(`${this.path}/get_form`, jwtMiddleware, this.get_form);
     }
@@ -26,7 +26,19 @@ class CvController implements Controller{
 
     private generate_pdf = async (request: Request, response: Response) => {
         try {
-            response.status(200).json({ status: "OK"});
+            const { userData, formId } = request.body;
+
+            if (!userData || typeof formId !== "number") {
+                return response.status(400).json({ error: "Invalid request format" });
+            }
+
+            const pdfUint8Array = await this.cvService.generateCVPDF(userData, formId);
+
+            response.setHeader("Content-Type", "application/pdf");
+            response.setHeader("Content-Disposition", "attachment; filename=cv.pdf");
+
+            // Convert Uint8Array to Buffer before sending
+            response.send(Buffer.from(pdfUint8Array));
         } catch (error) {
             console.error("Error generating PDF:", error);
             response.status(500).json({ error: "Failed to generate PDF" });

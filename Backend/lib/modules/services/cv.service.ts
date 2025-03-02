@@ -1,3 +1,4 @@
+import puppeteer from "puppeteer";
 import { UserData } from '../models/userdata.model';
 
 
@@ -246,6 +247,35 @@ class CvService{
             id = 0;
         }
         return this.cvTemplates[id](userData);
+    }
+
+    getAllForms(){
+
+    }
+
+    async generateCVPDF(userData: UserData, id: number): Promise<Uint8Array> {
+        try {
+            const html = this.generateCVHTML(userData, id);
+
+            const browser = await puppeteer.launch();
+            const page = await browser.newPage();
+
+            await page.setContent(html, {
+                waitUntil: 'networkidle0'
+            });
+
+            const pdfUint8Array = await page.pdf({
+                format: 'A4',
+                printBackground: true
+            });
+
+            await browser.close();
+
+            return pdfUint8Array;
+        } catch (error) {
+            console.error('Error generating PDF:', error);
+            throw new Error('Failed to generate PDF');
+        }
     }
 
 }
