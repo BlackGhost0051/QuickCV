@@ -105,6 +105,18 @@ class DatabaseService {
             return false;
         }
     }
+
+    async getAllUsers(){
+        try {
+            const users = await this.db?.all(
+                `SELECT id, login, isAdmin FROM users`
+            );
+            return users || [];
+        } catch (error) {
+            console.error("Error fetching all users:", error);
+            throw error;
+        }
+    }
 }
 
 export default DatabaseService;
