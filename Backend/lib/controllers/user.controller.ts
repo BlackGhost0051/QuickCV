@@ -67,9 +67,9 @@ class UserController implements Controller{
     }
 
     private async register(request: Request, response: Response){
-        const { login, password } = request.body;
+        const { login, password, email } = request.body;
 
-        if(!login || !password){
+        if(!login || !password || !email){
             return response.status(400).send("Login and password are required.");
         }
 
@@ -83,7 +83,7 @@ class UserController implements Controller{
                 return response.status(400).send("User with this login already exists.");
             }
 
-            await this.dbService.addUser(login,password);
+            await this.dbService.addUser(login,password,email);
             response.status(201).send("User registered successfully!");
         } catch (error){
             response.status(500).send(`Error during registration: ${error}`);

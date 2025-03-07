@@ -29,9 +29,12 @@ class DatabaseService {
                   id INTEGER PRIMARY KEY AUTOINCREMENT,
                   login TEXT NOT NULL,
                   password TEXT NOT NULL,
-                  isAdmin INTEGER DEFAULT 0
+                  email TEXT UNIQUE,
+                  isAdmin INTEGER DEFAULT 0,
+                  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
                 );
-            `); // email | profile info
+            `);
         } catch (error){
             console.error("Error connecting to the database:", error);
         }
@@ -40,12 +43,12 @@ class DatabaseService {
 
 
 
-    async addUser(login: string, password: string){
+    async addUser(login: string, password: string, email: string){
         try{
             const hashedPassword = await this.passwordService.hashPassword(password);
 
             const result = await this.db?.run(
-                `INSERT INTO users (login, password) VALUES (?, ?)`, [login, hashedPassword]
+                `INSERT INTO users (login, password, email) VALUES (?, ?, ?)`, [login, hashedPassword, email]
             );
 
             console.log('User added:', result);
@@ -72,7 +75,7 @@ class DatabaseService {
             const hashedPassword = await this.passwordService.hashPassword(password);
 
             const result = await this.db?.run(
-                `UPDATE users SET password = ? WHERE login = ?`, [hashedPassword, login]
+                `UPDATE users SET password = ?, updated_at = CURRENT_TIMESTAMP WHERE login = ?`, [hashedPassword, login]
             );
 
             console.log('User updated:', result);
@@ -109,7 +112,7 @@ class DatabaseService {
     async getAllUsers(){
         try {
             const users = await this.db?.all(
-                `SELECT id, login, isAdmin FROM users`
+                `SELECT id, login, email, isAdmin, created_at FROM users`
             );
             return users || [];
         } catch (error) {
