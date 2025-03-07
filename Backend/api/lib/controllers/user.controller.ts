@@ -8,7 +8,7 @@ import adminMiddleware from "../middlewares/admin.middleware";
 import jwtMiddleware from "../middlewares/jwt.middleware";
 
 class UserController implements Controller{
-    public path = '/user';
+    public path = '/api/user';
     public router = Router();
     private dbService: DatabaseService;
     private passwordService: PasswordService;

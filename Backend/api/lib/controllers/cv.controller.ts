@@ -6,7 +6,7 @@ import jwtMiddleware from "../middlewares/jwt.middleware";
 import CvService from "../modules/services/cv.service";
 
 class CvController implements Controller{
-    public path = '/cv';
+    public path = '/api/cv';
     public router = Router();
     private cvService: CvService;
 
