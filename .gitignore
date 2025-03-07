@@ -1,7 +1,8 @@
 .idea
-*/node_modules
+*/node_modules/
 package-lock.json
 
+Backend/api/node_modules
 
 
 
@@ -52,4 +53,4 @@ Thumbs.db
 
 
 # Backend
-/Backend/lib/database/*
+/Backend/api/lib/database/*
