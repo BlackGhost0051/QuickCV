@@ -18,6 +18,8 @@ class CvController implements Controller{
     }
 
     private initializeRoutes() {
+        this.router.get(`${this.path}/get_all_forms`, jwtMiddleware, this.get_all_forms)
+
         this.router.post(`${this.path}/generate-pdf`, jwtMiddleware ,this.generate_pdf);
 
         this.router.post(`${this.path}/get_form`, jwtMiddleware, this.get_form);
@@ -58,6 +60,14 @@ class CvController implements Controller{
             response.status(201).send(htmlContent);
         } catch (error) {
             response.status(500).json({ error: "Failed to generate CV form" });
+        }
+    }
+
+    private get_all_forms = async (request: Request, response: Response) => {
+        try{
+            response.status(201).json(this.cvService.getAllForms());
+        } catch (error) {
+            response.status(500).json({ error: "Failed to get CV forms" });
         }
     }
 }

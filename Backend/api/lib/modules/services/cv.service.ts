@@ -250,7 +250,31 @@ class CvService{
     }
 
     getAllForms(){
+        const sampleUserData: UserData = {
+            name: "Sample Name",
+            jobTitle: "Sample Job Title",
+            phone: "+00 000 000 000",
+            email: "sample@example.com",
+            github: "https://github.com/sample",
+            about: "This is a sample about section.",
+            education: {
+                institution: "Sample University",
+                degree: "Sample Degree",
+                status: "Completed"
+            },
+            skills: {
+                languages: ["JavaScript", "TypeScript", "Python"],
+                frameworks: ["React", "Node.js", "Django"]
+            },
+            achievements: "Sample achievement."
+        };
 
+        return {
+            templates: this.cvTemplates.map((template, index) => ({
+                id: index,
+                html: template(sampleUserData)
+            }))
+        };
     }
 
     async generateCVPDF(userData: UserData, id: number): Promise<Uint8Array> {
