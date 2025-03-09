@@ -11,10 +11,4 @@ import {RouterLink} from '@angular/router';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent {
-  isLogin: boolean = true;
-
-  changeButton(): void{
-    this.isLogin = !this.isLogin;
-  }
-
 }
