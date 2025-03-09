@@ -13,13 +13,17 @@ import {FormsModule} from '@angular/forms';
   styleUrl: './signup.component.css'
 })
 export class SignupComponent {
-  username: string = '';
-  email: string = '';
-  password: string = '';
-  confirmPassword: string = '';
+
+  public form = {
+    username: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+  }
+
 
 
   onSubmit(){
-    console.log(this.username, this.email, this.password, this.confirmPassword);
+    console.log(this.form.username, this.form.email, this.form.password, this.form.confirmPassword);
   }
 }
