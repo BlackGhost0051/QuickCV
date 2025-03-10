@@ -39,7 +39,7 @@ class UserController implements Controller{
         const { login, password } = request.body;
 
         if(!login || !password){
-            return response.status(400).send("Login and password are required.");
+            return response.status(400).json({ error: "Login and password are required." });
         }
 
 
@@ -48,13 +48,13 @@ class UserController implements Controller{
             const user = await this.dbService.getUserByLogin(login);
 
             if (!user) {
-                return response.status(404).send("User not found.");
+                return response.status(404).json({ error: "User not found." });
             }
 
             const passwordMatch = await this.passwordService.comparePassword(password, user.password);
 
             if(!passwordMatch){
-                return response.status(401).send("Invalid credentials.");
+                return response.status(401).json({ error: "Invalid credentials." });
             }
 
             //const token = this.jwtService.generateToken(login);
@@ -62,7 +62,7 @@ class UserController implements Controller{
             //response.cookie("token", token, { httpOnly: true, secure: true });
             response.status(200).json({ token: this.jwtService.generateToken(login) });
         } catch (error){
-            response.status(500).send(`Error during authentication: ${error}`);
+            response.status(500).json({ error: "Error during authentication." });
         }
     }
 
@@ -70,7 +70,7 @@ class UserController implements Controller{
         const { login, password, email } = request.body;
 
         if(!login || !password || !email){
-            return response.status(400).send("Login and password are required.");
+            return response.status(400).json({ error: "Login and password are required." });
         }
 
 
@@ -80,13 +80,13 @@ class UserController implements Controller{
             const existingUser = await this.dbService.getUserByLogin(login);
 
             if(existingUser){
-                return response.status(400).send("User with this login already exists.");
+                return response.status(400).json({ error: "User with this login already exists." });
             }
 
             await this.dbService.addUser(login,password,email);
-            response.status(201).send("User registered successfully!");
+            response.status(201).json({ message: "User registered successfully!" });
         } catch (error){
-            response.status(500).send(`Error during registration: ${error}`);
+            response.status(500).json({ error: "Error during registration." });
         }
     }
 
@@ -94,7 +94,7 @@ class UserController implements Controller{
         const { login, oldPassword, newPassword } = request.body;
 
         if (!login || !oldPassword || !newPassword) {
-            return response.status(400).send("All fields are required.");
+            return response.status(400).json({ error: "All fields are required." });
         }
 
         try{
@@ -103,18 +103,18 @@ class UserController implements Controller{
 
 
             if (!user) {
-                return response.status(404).send("User not found.");
+                return response.status(404).json({ error: "User not found." });
             }
 
             const passwordMatch = await this.passwordService.comparePassword(oldPassword, user.password);
             if (!passwordMatch) {
-                return response.status(401).send("Old password is incorrect.");
+                return response.status(401).json({ error: "Old password is incorrect." });
             }
 
             await this.dbService.updateUser(login, newPassword);
-            response.status(200).send("Password updated successfully.");
+            response.status(200).json({ message: "Password updated successfully." });
         } catch (error){
-            response.status(500).send(`Error changing password: ${error}`);
+            response.status(500).json({ error: "Error changing password." });
         }
     }
 
@@ -122,7 +122,7 @@ class UserController implements Controller{
         const { login } = request.body;
 
         if(!login){
-            return response.status(400).send("Login is required.");
+            return response.status(400).json({ error: "Login is required." });
         }
 
         try{
@@ -132,13 +132,13 @@ class UserController implements Controller{
             const user = await this.dbService.getUserByLogin(login);
 
             if (!user) {
-                return response.status(404).send("User not found.");
+                return response.status(404).json({ error: "User not found." });
             }
 
             await this.dbService.deleteUser(login);
-            response.status(200).send("User deleted successfully.");
+            response.status(200).json({ message: "User deleted successfully." });
         } catch (error){
-            response.status(500).send(`Error deleting user: ${error}`);
+            response.status(500).json({ error: "Error deleting user." });
         }
     }
 
@@ -149,7 +149,7 @@ class UserController implements Controller{
 
             response.status(200).json(users);
         } catch (error) {
-            response.status(500).send(`Error retrieving users: ${error}`);
+            response.status(500).json({ error: "Error retrieving users." });
         }
     }
 }
