@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import {RouterLink} from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
 import {FormsModule} from '@angular/forms';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -22,8 +23,21 @@ export class SignupComponent {
   }
 
 
+  constructor(private authService: AuthService, public router: Router) {
 
-  onSubmit(){
-    console.log(this.form.username, this.form.email, this.form.password, this.form.confirmPassword);
+  }
+
+
+  onSubmit() {
+    if (this.form.password === this.form.confirmPassword) {
+      this.authService.register({
+        login: this.form.username,
+        email: this.form.email,
+        password: this.form.password
+      }).subscribe((result) => {
+          this.router.navigate(['/login']);
+        }
+      );
+    }
   }
 }
