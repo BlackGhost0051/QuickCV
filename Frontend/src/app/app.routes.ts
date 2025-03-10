@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import {authGuard} from './services/auth.guard';
 
 export const routes: Routes = [
   {
@@ -7,7 +8,8 @@ export const routes: Routes = [
   },
   {
     path: 'generator',
-    loadComponent: () => import('./components/cv-generator/cv-generator.component').then(m => m.CvGeneratorComponent)
+    loadComponent: () => import('./components/cv-generator/cv-generator.component').then(m => m.CvGeneratorComponent),
+    canActivate: [authGuard]
   },
   {
     path: 'login',

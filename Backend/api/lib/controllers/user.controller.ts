@@ -57,10 +57,10 @@ class UserController implements Controller{
                 return response.status(401).send("Invalid credentials.");
             }
 
-            const token = this.jwtService.generateToken(login);
+            //const token = this.jwtService.generateToken(login);
 
-            response.cookie("token", token, { httpOnly: true, secure: true });
-            response.status(200).send("Authentication successful!");
+            //response.cookie("token", token, { httpOnly: true, secure: true });
+            response.status(200).json({ token: this.jwtService.generateToken(login) });
         } catch (error){
             response.status(500).send(`Error during authentication: ${error}`);
         }
