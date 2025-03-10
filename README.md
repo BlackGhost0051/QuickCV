@@ -9,7 +9,7 @@
 
 ### Backend
 ```
-cd Backend
+cd Backend/api
 ```
 
 ```
@@ -24,3 +24,17 @@ npx puppeteer browsers install chrome
 ```
 npm run watch
 ```
+
+## Frontend
+
+```
+cd Frontend
+```
+
+```
+npm install
+```
+
+``
+ng serve
+``
