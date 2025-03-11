@@ -25,6 +25,7 @@ class UserController implements Controller{
 
     private initializeRoutes() {
         this.router.get(`${this.path}/get_all_users`, adminMiddleware, this.get_all_users.bind(this));
+        this.router.get(`${this.path}/isAdmin`, adminMiddleware, this.isAdmin.bind(this));
 
         this.router.post(`${this.path}/auth`, this.authenticate.bind(this));
         this.router.post(`${this.path}/register`, this.register.bind(this));
@@ -150,6 +151,14 @@ class UserController implements Controller{
             response.status(200).json(users);
         } catch (error) {
             response.status(500).json({ error: "Error retrieving users." });
+        }
+    }
+
+    private async isAdmin(request: Request, response: Response){
+        try{
+            response.status(200).json({ isAdmin: true });
+        } catch (error){
+            response.status(500).json({ error: "Error isAdmin." });
         }
     }
 }

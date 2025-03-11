@@ -47,6 +47,19 @@ export class AuthService {
     return !(jwtHelper.isTokenExpired(token));
   }
 
+  isAdmin(){
+    const localStorage = this.document.defaultView?.localStorage;
+    const jwtHelper = new JwtHelperService();
+    const token = localStorage?.getItem('token');
+
+
+    if (!token || jwtHelper.isTokenExpired(token)) {
+      return false;
+    }
+
+    return this.http.get<{ isAdmin: boolean }>(this.url + '/user/isAdmin');
+  }
+
   get currentUser() {
     const token = this.getToken();
     if (!token) {
