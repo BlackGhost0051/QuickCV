@@ -18,8 +18,6 @@ const verifyAdmin = async ( request: Request, response: Response, next: NextFunc
         }
 
         try{
-            console.log("ADMIN ", token);
-
             const decoded = jwtService.verifyToken(token);
             const login: string = decoded.login;
 
@@ -29,17 +27,17 @@ const verifyAdmin = async ( request: Request, response: Response, next: NextFunc
 
 
             if(!isAdmin){
-                return response.status(403).json({ error: "Access denied. Admins only." });
+                return response.status(200).json({ isAdmin: false });
             }
 
-
+            console.log("ADMIN ", token);
             next();
         } catch (ex){
-            return response.status(400).json({ error: 'Invalid token.' });
+            return response.status(400).json({ isAdmin: false });
         }
 
     } else {
-        return response.status(401).json({ error: 'Access denied. No token provided.' });
+        return response.status(200).json({ isAdmin: false });
     }
 }
 

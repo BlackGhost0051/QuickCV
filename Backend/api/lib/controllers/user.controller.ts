@@ -158,7 +158,7 @@ class UserController implements Controller{
         try{
             response.status(200).json({ isAdmin: true });
         } catch (error){
-            response.status(500).json({ error: "Error isAdmin." });
+            response.status(500).json({ isAdmin: false });
         }
     }
 }

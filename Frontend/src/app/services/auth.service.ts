@@ -4,6 +4,7 @@ import {JwtHelperService} from "@auth0/angular-jwt";
 import {map} from 'rxjs/operators';
 import {DOCUMENT} from "@angular/common";
 import {Token} from "../models/token";
+import {Observable, of} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -47,17 +48,23 @@ export class AuthService {
     return !(jwtHelper.isTokenExpired(token));
   }
 
-  isAdmin(){
+  isAdmin(): Observable<boolean> {
     const localStorage = this.document.defaultView?.localStorage;
     const jwtHelper = new JwtHelperService();
     const token = localStorage?.getItem('token');
 
-
     if (!token || jwtHelper.isTokenExpired(token)) {
-      return false;
+      return of(false);
     }
 
-    return this.http.get<{ isAdmin: boolean }>(this.url + '/user/isAdmin');
+    return this.http.get<{ isAdmin: boolean }>(`${this.url}/user/isAdmin`, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      }
+    }).pipe(
+      map(response => response.isAdmin)
+    );
   }
 
   get currentUser() {
