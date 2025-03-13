@@ -22,6 +22,8 @@ export class AdminService {
   }
 
   deleteUser(login: string) {
+    const token = this.getToken();
+    const headers = token ? new HttpHeaders({ 'Authorization': `Bearer  ${token}` }) : undefined;
     return this.http.delete(`${this.apiUrl}/user/delete_user`, { body: { login } });
   }
 }
