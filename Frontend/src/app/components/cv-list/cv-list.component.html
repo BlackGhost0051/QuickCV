@@ -1,0 +1,5 @@
+<div class="cv-list-container">
+  <div *ngFor="let cv of cvTemplates" (click)="onTemplateClick(cv.id)">
+    <div [innerHTML]="cv.html" id="cv-template-{{cv.id}}"></div>
+  </div>
+</div>
