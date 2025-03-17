@@ -362,7 +362,7 @@ class CvService{
             height: 297mm;
             background: #f5f5f5;
             color: #333;
-            padding: 20mm;
+            padding: 10mm;
             font-family: 'Arial', sans-serif;
             line-height: 1.6;
         }
