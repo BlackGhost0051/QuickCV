@@ -46,7 +46,7 @@ class DatabaseService {
     async addUser(login: string, password: string, email: string){
         try{
             const hashedPassword = await this.passwordService.hashPassword(password);
-
+            // verify if user is created
             const result = await this.db?.run(
                 `INSERT INTO users (login, password, email) VALUES (?, ?, ?)`, [login, hashedPassword, email]
             );
