@@ -1,0 +1,14 @@
+.cv-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  background: rgba(0, 0, 0, 0.7);
+  justify-content: center;
+}
+
+.cv-preview {
+  zoom: 25%;
+  padding: 5ex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
