@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-cv-list',
@@ -14,7 +15,7 @@ export class CvListComponent implements OnInit {
   url: string = "http://localhost:3100/api";
   cvTemplates: { id: number, html: SafeHtml }[] = [];
 
-  constructor(private http: HttpClient, private sanitizer: DomSanitizer) {}
+  constructor(private http: HttpClient, private sanitizer: DomSanitizer, private router: Router) {}
 
   ngOnInit() {
     this.fetchTemplates();
@@ -38,6 +39,7 @@ export class CvListComponent implements OnInit {
 
   onTemplateClick(id: number) {
     console.log("Clicked CV template with ID:", id);
+    // this.router.navigate("/test");
   }
 
 
