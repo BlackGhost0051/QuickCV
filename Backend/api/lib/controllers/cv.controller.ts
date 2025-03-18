@@ -57,7 +57,7 @@ class CvController implements Controller{
 
             const htmlContent = this.cvService.generateCVHTML(userData, formId);
 
-            response.status(201).send(htmlContent);
+            response.status(200).json(htmlContent);
         } catch (error) {
             response.status(500).json({ error: "Failed to generate CV form" });
         }
