@@ -13,6 +13,11 @@ export const routes: Routes = [
     canActivate: [authGuard]
   },
   {
+    path: 'form/:id',
+    loadComponent: () => import('./components/cv-form/cv-form.component').then(m => m.CvFormComponent),
+    canActivate: [authGuard]
+  },
+  {
     path: 'login',
     loadComponent: () => import('./components/login/login.component').then(m => m.LoginComponent)
   },

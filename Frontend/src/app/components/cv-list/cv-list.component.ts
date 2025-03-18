@@ -39,9 +39,6 @@ export class CvListComponent implements OnInit {
 
   onTemplateClick(id: number) {
     console.log("Clicked CV template with ID:", id);
-    // this.router.navigate("/test");
+    this.router.navigate([`/form/${id}`]);
   }
-
-
-
 }
