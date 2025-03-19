@@ -1,0 +1,80 @@
+.cv-form-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(58, 0, 23, 0.8);
+  color: white;
+  padding: 2ex;
+}
+
+.cv-form-container .cv-preview{
+  zoom: 100%;
+}
+
+.cv-input-container {
+  padding: 0 2ex 2ex 2ex;
+}
+
+.cv-input-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1ex;
+}
+
+.cv-input-container label {
+  font-weight: bold;
+  margin-top: 1ex;
+}
+
+
+.cv-input-container input,
+.cv-input-container textarea {
+  width: calc(100% - 4ex);
+  padding: 2ex;
+  border: none;
+  border-radius: 1ex;
+  font-size: 2ex;
+}
+
+
+.cv-input-container textarea {
+  height: 5ex;
+  resize: none;
+}
+
+
+h3 {
+  margin-top: 2ex;
+  text-decoration: underline;
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5ex;
+}
+
+.cv-input-container button {
+  padding: 2ex;
+  border: none;
+  border-radius: 1ex;
+  color: white;
+  font-size: 2ex;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.cv-input-container .submit-button:hover {
+  background-color: #d4005c;
+}
+
+.submit-button{
+  background-color: #ff4081;
+}
+
+.reload-button {
+  background-color: #ff9800;
+}
+
+.reload-button:hover {
+  background-color: #e68900;
+}

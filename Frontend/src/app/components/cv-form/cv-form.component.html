@@ -1,8 +1,55 @@
 <div class="cv-form-container" >
-  <div [innerHTML]="formContent" id="cv-template-{{cvId}}">
+  <div [innerHTML]="formContent" id="cv-template-{{cvId}}" class="cv-preview">
 
   </div>
-  <div>
+  <div class="cv-input-container">
+    <form [formGroup]="cvForm" (ngSubmit)="submitForm()">
+      <label for="name">Full Name:</label>
+      <input id="name" type="text" formControlName="name">
 
+      <label for="jobTitle">Job Title:</label>
+      <input id="jobTitle" type="text" formControlName="jobTitle">
+
+      <label for="phone">Phone:</label>
+      <input id="phone" type="text" formControlName="phone">
+
+      <label for="email">Email:</label>
+      <input id="email" type="email" formControlName="email">
+
+      <label for="github">GitHub url:</label>
+      <input id="github" type="text" formControlName="github">
+
+      <label for="about">About Me:</label>
+      <textarea id="about" formControlName="about"></textarea>
+
+      <h3>Education</h3>
+      <div formGroupName="education">
+        <label for="institution">Institution:</label>
+        <input id="institution" type="text" formControlName="institution">
+
+        <label for="degree">Degree:</label>
+        <input id="degree" type="text" formControlName="degree">
+
+        <label for="status">Status:</label>
+        <input id="status" type="text" formControlName="status">
+      </div>
+
+      <h3>Skills</h3>
+      <div formGroupName="skills">
+        <label for="languages">Languages:</label>
+        <input id="languages" type="text" formControlName="languages">
+
+        <label for="frameworks">Frameworks:</label>
+        <input id="frameworks" type="text" formControlName="frameworks">
+      </div>
+
+      <label for="achievements">Achievements:</label>
+      <input id="achievements" type="text" formControlName="achievements">
+
+      <div class="button-container">
+        <button type="submit" class="submit-button">Generate PDF</button>
+        <button type="button" class="reload-button" (click)="reloadForm()">Enter Form</button>
+      </div>
+    </form>
   </div>
 </div>
