@@ -3,6 +3,8 @@
   flex-wrap: wrap;
   background: rgba(0, 0, 0, 0.7);
   justify-content: center;
+
+  margin: 0 5ex 0 5ex;
 }
 
 .cv-preview {

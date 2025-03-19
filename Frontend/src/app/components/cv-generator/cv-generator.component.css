@@ -2,3 +2,8 @@
   height: 95vh;
   color: #fff;
 }
+
+.cv-generator-container h1{
+  text-align: center;
+  margin: 1ex;
+}
