@@ -52,7 +52,7 @@ export class CvFormComponent implements OnInit{
         "jobTitle": "Software Engineer",
         "phone": "+88 888 888 888",
         "email": "john.doe@example.com",
-        "github": "https://github.com/johndoe",
+        "github": `form/${this.cvId}`,
         "about": "I am a third-year Computer Science student with a passion for web development.",
         "education": {
           "institution": "State University",
