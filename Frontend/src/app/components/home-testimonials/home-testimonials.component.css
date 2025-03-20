@@ -4,9 +4,13 @@
   padding: 2rem;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  text-align: center;
+}
+
+.home-main-testimonials-container {
   max-width: 60vw;
   margin: 2rem auto;
-  text-align: center;
 }
 
 .home-testimonials-container h2 {
