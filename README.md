@@ -8,6 +8,14 @@ QuickCV is a web-based application that allows users to create and customize CVs
   - [Backend Setup](#backend)
   - [Frontend Setup](#frontend)
 
+# Angular
+
+# Express.js
+
+# Api
+## GET
+## POST
+
 ## Run
 
 
