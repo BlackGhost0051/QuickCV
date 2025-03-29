@@ -48,6 +48,12 @@ export class AuthService {
     return !(jwtHelper.isTokenExpired(token));
   }
 
+  logout(){
+    const localStorage = this.document.defaultView?.localStorage;
+
+    localStorage?.removeItem('token');
+  }
+
   isAdmin(): Observable<boolean> {
     const localStorage = this.document.defaultView?.localStorage;
     const jwtHelper = new JwtHelperService();
