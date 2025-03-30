@@ -22,13 +22,14 @@ export class LoginComponent {
 
   public logged?: boolean;
   public logout?: boolean;
+  public errorMessage?: string;
 
   constructor(public authService: AuthService, private router: Router) {
   }
 
   signIn() {
+    this.errorMessage = undefined;
     return this.authService.authenticate(this.credentials).subscribe((result) => {
-      console.log(result)
       if (!result) {
         this.logged = false;
       } else {
@@ -39,6 +40,10 @@ export class LoginComponent {
         };
         this.router.navigate(['/']);
       }
-    });
+    },
+      (error) => {
+        this.errorMessage = 'Login or password is incorrect.';
+      }
+      );
   }
 }

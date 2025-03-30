@@ -11,6 +11,11 @@
         <input [(ngModel)]="credentials.password" type="password" name="password" placeholder="Password" title="Password" class="form-control">
       </div>
 
+      @if(errorMessage){
+        <p class="error-message">{{ errorMessage }}</p>
+      }
+
+
       <button (click)="signIn()" type="submit" title="Sign in" class="submit-btn">Sign in</button>
 
       <a href="#" [routerLink]="['/signup']">Sing up</a>
