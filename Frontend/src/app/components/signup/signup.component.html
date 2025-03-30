@@ -19,6 +19,10 @@
         <input [(ngModel)]="form.confirmPassword" type="password" name="password" placeholder="Confirm password" title="Confirm password" class="form-control">
       </div>
 
+      @if(errorMessage){
+        <p class="error-message">{{ errorMessage }}</p>
+      }
+
       <button (click)="onSubmit()" type="submit" title="Sign up" class="submit-btn">Sign up</button>
 
       <a href="#" [routerLink]="['/login']">Sing in</a>

@@ -73,3 +73,8 @@
   display: block;
   text-align: right;
 }
+
+.error-message {
+  color: #ff4d4d;
+  margin-bottom: 1rem;
+}

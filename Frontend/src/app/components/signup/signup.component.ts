@@ -22,6 +22,8 @@ export class SignupComponent {
     confirmPassword: ''
   }
 
+  public errorMessage?: string;
+
 
   constructor(private authService: AuthService, public router: Router) {
 
@@ -29,15 +31,34 @@ export class SignupComponent {
 
 
   onSubmit() {
-    if (this.form.password === this.form.confirmPassword) {
-      this.authService.register({
-        login: this.form.username,
-        email: this.form.email,
-        password: this.form.password
-      }).subscribe((result) => {
-          this.router.navigate(['/login']);
-        }
-      );
+    this.errorMessage = undefined;
+
+    if (!this.form.username || !this.form.email || !this.form.password || !this.form.confirmPassword) {
+      this.errorMessage = 'All fields are required';
+      return;
     }
+
+    if (this.form.password.length < 6) {
+      this.errorMessage = 'Password must be at least 6 characters long';
+      return;
+    }
+
+    if (this.form.password !== this.form.confirmPassword) {
+      this.errorMessage = 'Passwords do not match';
+      return;
+    }
+
+    this.authService.register({
+      login: this.form.username,
+      email: this.form.email,
+      password: this.form.password
+    }).subscribe(
+      () => {
+        this.router.navigate(['/login']);
+      },
+      (error) => {
+        this.errorMessage = `User with this login already exists.`;
+      }
+    );
   }
 }
