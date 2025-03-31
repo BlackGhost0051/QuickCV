@@ -5,46 +5,46 @@
   <div class="cv-input-container">
     <form [formGroup]="cvForm" (ngSubmit)="submitForm()">
       <label for="name">Full Name:</label>
-      <input id="name" type="text" formControlName="name">
+      <input id="name" type="text" formControlName="name" placeholder="Enter your full name">
 
       <label for="jobTitle">Job Title:</label>
-      <input id="jobTitle" type="text" formControlName="jobTitle">
+      <input id="jobTitle" type="text" formControlName="jobTitle" placeholder="Enter your job title">
 
       <label for="phone">Phone:</label>
-      <input id="phone" type="text" formControlName="phone">
+      <input id="phone" type="text" formControlName="phone" placeholder="Enter your phone number">
 
       <label for="email">Email:</label>
-      <input id="email" type="email" formControlName="email">
+      <input id="email" type="email" formControlName="email" placeholder="Enter your email address">
 
       <label for="github">GitHub url:</label>
-      <input id="github" type="text" formControlName="github">
+      <input id="github" type="text" formControlName="github" placeholder="Enter your GitHub profile URL">
 
       <label for="about">About Me:</label>
-      <textarea id="about" formControlName="about"></textarea>
+      <textarea id="about" formControlName="about" placeholder="Write something about yourself"></textarea>
 
       <h3>Education</h3>
       <div formGroupName="education">
         <label for="institution">Institution:</label>
-        <input id="institution" type="text" formControlName="institution">
+        <input id="institution" type="text" formControlName="institution" placeholder="Enter institution name">
 
         <label for="degree">Degree:</label>
-        <input id="degree" type="text" formControlName="degree">
+        <input id="degree" type="text" formControlName="degree" placeholder="Enter degree name">
 
         <label for="status">Status:</label>
-        <input id="status" type="text" formControlName="status">
+        <input id="status" type="text" formControlName="status" placeholder="Enter education status">
       </div>
 
       <h3>Skills</h3>
       <div formGroupName="skills">
         <label for="languages">Languages:</label>
-        <input id="languages" type="text" formControlName="languages">
+        <input id="languages" type="text" formControlName="languages" placeholder="Enter languages (e.g., C++, C, Java)">
 
         <label for="frameworks">Frameworks:</label>
-        <input id="frameworks" type="text" formControlName="frameworks">
+        <input id="frameworks" type="text" formControlName="frameworks" placeholder="Enter frameworks (e.g., Spring, Flask)">
       </div>
 
       <label for="achievements">Achievements:</label>
-      <input id="achievements" type="text" formControlName="achievements">
+      <input id="achievements" type="text" formControlName="achievements" placeholder="Enter achievements">
 
       <div class="button-container">
         <button type="submit" class="submit-button">Generate PDF</button>
