@@ -15,3 +15,8 @@
   width: 100vw;
   font: 1rem "Fira Sans", sans-serif;
 }
+
+
+app-navbar{
+  margin: 5vh;
+}

@@ -1,20 +1,35 @@
-<nav class="navbar">
-  <div class="navbar-brand">
-    <a class="navbar-logo" href="#" [routerLink]="['/']">QuickCV</a>
-  </div>
-  <ul class="navbar-links">
-    <li><a class="navbar-link" href="#" [routerLink]="['/']">Home</a></li>
+<div class="navbar-container">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-logo" href="#" [routerLink]="['/']">QuickCV</a>
+    </div>
+    <ul class="navbar-links">
+  <!--    <li><a class="navbar-link" href="#" [routerLink]="['/']">Home</a></li>-->
 
 
-<!--      <li><a class="navbar-link" href="#" [routerLink]="['/statistics']">Statistics</a></li>-->
-    @if(authService.isLoggedIn()){
-      <li><a class="navbar-link" href="#" (click)="logout()">Logout</a></li>
-    }
+  <!--      <li><a class="navbar-link" href="#" [routerLink]="['/statistics']">Statistics</a></li>-->
 
-    @if(!authService.isLoggedIn()){
-      <li><a class="navbar-link" href="#" [routerLink]="['/login']">Login</a></li>
-      <li><a class="navbar-link" href="#" [routerLink]="['/signup']">Signup</a></li>
-    }
+      @if(!authService.isLoggedIn()){
+        <li><a class="navbar-link" href="#" [routerLink]="['/login']">Login</a></li>
+        <li><a class="navbar-link" href="#" [routerLink]="['/signup']">Signup</a></li>
+      }
 
-  </ul>
-</nav>
+      @if(authService.getLogin()){
+        <li>
+          <button class="dropdown-button" [textContent]="authService.getLogin()[0]" (click)="loginButtonClick()"></button>
+
+          @if(isDropdownOpen){
+            <ul class="dropdown-menu">
+              <li><div [textContent]="authService.getLogin()"></div></li>
+              <li><a class="navbar-link" href="#" [routerLink]="['/change-password']">Change Password</a></li>
+              <li><a class="navbar-link" href="#" (click)="logout()">Logout</a></li>
+            </ul>
+          }
+
+        </li>
+      }
+
+
+    </ul>
+  </nav>
+</div>
