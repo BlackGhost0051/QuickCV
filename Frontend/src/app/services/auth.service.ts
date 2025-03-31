@@ -48,6 +48,21 @@ export class AuthService {
     return !(jwtHelper.isTokenExpired(token));
   }
 
+  getLogin(){
+    const localStorage = this.document.defaultView?.localStorage;
+    const jwtHelper = new JwtHelperService();
+    const token = localStorage?.getItem('token');
+
+    if(!token){
+      return;
+    }
+
+    if(!jwtHelper.isTokenExpired(token)){
+      const decodedToken = new JwtHelperService().decodeToken(token);
+      return decodedToken?.login || null;
+    }
+  }
+
   logout(){
     const localStorage = this.document.defaultView?.localStorage;
 
