@@ -21,7 +21,7 @@
           @if(isDropdownOpen){
             <ul class="dropdown-menu">
               <li><div [textContent]="authService.getLogin()"></div></li>
-              <li><a class="navbar-link" href="#" [routerLink]="['/change-password']">Change Password</a></li>
+              <li><a class="navbar-link" href="#" [routerLink]="['/change-password']" (click)="loginButtonClick()">Change Password</a></li>
               <li><a class="navbar-link" href="#" (click)="logout()">Logout</a></li>
             </ul>
           }
