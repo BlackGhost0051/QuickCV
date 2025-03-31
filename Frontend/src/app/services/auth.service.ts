@@ -101,4 +101,8 @@ export class AuthService {
     const localStorage = this.document.defaultView?.localStorage;
     return localStorage?.getItem('token');
   }
+
+  changePassword(credentials: any){
+    return this.http.patch(this.url + '/user/change_password', credentials);
+  }
 }
