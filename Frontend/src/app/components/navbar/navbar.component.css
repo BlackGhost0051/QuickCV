@@ -55,7 +55,7 @@
   border: none;
   font-size: 2ex;
   cursor: pointer;
-
+  padding: 1ex;
 }
 
 .dropdown-menu{
