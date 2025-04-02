@@ -283,6 +283,10 @@ class CvService{
             list-style: none;
             margin: 5px 0;
         }
+        #cv-template-0 .contact-info a {
+            text-decoration: none;
+            color: #82aaff;
+        }
         #cv-template-0 li {
             margin: 3px;
         }
