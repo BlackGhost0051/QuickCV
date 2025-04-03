@@ -14,7 +14,29 @@ QuickCV is a web-based application that allows users to create and customize CVs
 
 # Api
 ## GET
+```
+/api/user/get_all_users
+/api/user/isAdmin
+/api/cv/get_all_forms
+```
+
 ## POST
+```
+/api/user/auth
+/api/user/register
+/api/cv/generate-pdf
+/api/cv/get_form
+```
+
+## PATCH
+```
+/api/user/change_password
+```
+
+## DELETE
+```
+/api/user/delete_user
+```
 
 ## Run
 
@@ -66,3 +88,20 @@ ng serve
 ```
 
 The application should now be running locally! 🎉
+
+
+## Run using Docker
+
+Install Docker
+
+### Start
+
+```
+sudo docker-compose up --build
+```
+
+### Stop 
+
+```
+sudo docker-compose down -v --remove-orphans
+```
