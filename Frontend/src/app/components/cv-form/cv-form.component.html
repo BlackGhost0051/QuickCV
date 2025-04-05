@@ -51,5 +51,14 @@
         <button type="button" class="reload-button" (click)="reloadForm()">Enter Form</button>
       </div>
     </form>
+
+    @if(errorMessage){
+      <p class="error-message">{{ errorMessage }}</p>
+    }
+
+    @if(okMessage){
+      <p class="message">{{ okMessage }}</p>
+    }
+
   </div>
 </div>

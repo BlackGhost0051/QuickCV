@@ -14,6 +14,9 @@ import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
   styleUrl: './cv-form.component.css'
 })
 export class CvFormComponent implements OnInit{
+  public errorMessage?: string;
+  public okMessage?: string;
+
   cvId!: number;
   url: string = "http://localhost:3100/api";
   formContent: SafeHtml = '';
@@ -81,8 +84,12 @@ export class CvFormComponent implements OnInit{
       }
     );
   }
-
+//
   submitForm() {
+    this.errorMessage = undefined;
+    this.okMessage = undefined;
+
+
     let formData = this.getFormData();
 
     this.http.post(`${this.url}/cv/generate-pdf`, formData, { responseType: 'blob' }).subscribe(
