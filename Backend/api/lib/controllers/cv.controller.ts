@@ -4,7 +4,7 @@ import puppeteer from "puppeteer";
 import jwtMiddleware from "../middlewares/jwt.middleware";
 
 import CvService from "../modules/services/cv.service";
-import fetch from 'node-fetch';
+// import fetch from 'node-fetch';
 
 class CvController implements Controller{
     public path = '/api/cv';
@@ -25,8 +25,8 @@ class CvController implements Controller{
 
         this.router.post(`${this.path}/get_form`, jwtMiddleware, this.get_form);
 
-        // test
-        this.router.get(`${this.path}/statistics`, this.get_statistic.bind(this));
+        // this
+        this.router.get(`${this.path}/statistics`, jwtMiddleware,this.get_statistic.bind(this));
     }
 
     private async get_statistic(req: Request, res: Response, next: NextFunction) {
