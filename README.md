@@ -2,18 +2,18 @@
 
 QuickCV is a web-based application that allows users to create and customize CVs with multiple templates.
 
-# Content
+## Content
 
 - [Run Instructions](#run)
   - [Backend Setup](#backend)
   - [Frontend Setup](#frontend)
 
-# Angular
+## Angular
 
-# Express.js
+## Express.js
 
-# API
-## GET
+## API
+### GET
 ```
 /api/user/get_all_users
 /api/user/isAdmin
@@ -21,7 +21,7 @@ QuickCV is a web-based application that allows users to create and customize CVs
 /api/cv/statistics
 ```
 
-## POST
+### POST
 ```
 /api/user/auth
 /api/user/register
@@ -29,12 +29,12 @@ QuickCV is a web-based application that allows users to create and customize CVs
 /api/cv/get_form
 ```
 
-## PATCH
+### PATCH
 ```
 /api/user/change_password
 ```
 
-## DELETE
+### DELETE
 ```
 /api/user/delete_user
 ```
@@ -68,7 +68,7 @@ Run the backend in watch mode:
 npm run watch
 ```
 
-## Frontend
+### Frontend
 
 To set up and run the frontend:
 
