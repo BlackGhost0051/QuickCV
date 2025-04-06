@@ -4,6 +4,7 @@ import puppeteer from "puppeteer";
 import jwtMiddleware from "../middlewares/jwt.middleware";
 
 import CvService from "../modules/services/cv.service";
+import fetch from 'node-fetch';
 
 class CvController implements Controller{
     public path = '/api/cv';
@@ -23,6 +24,25 @@ class CvController implements Controller{
         this.router.post(`${this.path}/generate-pdf`, jwtMiddleware ,this.generate_pdf);
 
         this.router.post(`${this.path}/get_form`, jwtMiddleware, this.get_form);
+
+        // test
+        this.router.get(`${this.path}/statistics`, this.get_statistic.bind(this));
+    }
+
+    private async get_statistic(req: Request, res: Response, next: NextFunction) {
+        try {
+            const response = await fetch('https://data.montgomerycountymd.gov/api/views/48wg-fkab/rows.json?accessType=DOWNLOAD');
+
+            if (!response.ok) {
+                return res.status(response.status).json({ error: 'Failed to fetch data' });
+            }
+
+            const data = await response.json();
+            return res.status(200).json(data);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            return res.status(500).json({ error: 'Internal Server Error' });
+        }
     }
 
 
