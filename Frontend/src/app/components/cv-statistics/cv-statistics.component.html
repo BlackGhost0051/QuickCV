@@ -2,6 +2,23 @@
   <h1>CV Statistics</h1>
 
   <div class="cv-statistics">
-
+<!--    <ngx-charts-pie-chart-->
+<!--      [view]="view"-->
+<!--      [scheme]="'nightLights'"-->
+<!--      [results]="chartData"-->
+<!--      [legend]="showLegend"-->
+<!--      [labels]="showLabels"-->
+<!--      [doughnut]="isDoughnut">-->
+<!--    </ngx-charts-pie-chart>-->
+    <ngx-charts-bar-vertical
+      [results]="chartData"
+      [view]="view"
+      [scheme]="'vivid'"
+      [legend]="showLegend"
+      [showDataLabel]="showLabels"
+      [xAxis]="true"
+      [yAxis]="true"
+      [roundEdges]="true">
+    </ngx-charts-bar-vertical>
   </div>
 </div>

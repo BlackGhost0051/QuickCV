@@ -5,3 +5,7 @@
 
   text-align: center;
 }
+
+::ng-deep .ngx-charts text {
+  fill: white !important;
+}
