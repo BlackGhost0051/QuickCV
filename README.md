@@ -12,12 +12,13 @@ QuickCV is a web-based application that allows users to create and customize CVs
 
 # Express.js
 
-# Api
+# API
 ## GET
 ```
 /api/user/get_all_users
 /api/user/isAdmin
 /api/cv/get_all_forms
+/api/cv/statistics
 ```
 
 ## POST
