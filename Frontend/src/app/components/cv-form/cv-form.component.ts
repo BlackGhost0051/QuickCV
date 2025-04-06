@@ -3,11 +3,13 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
+import {NgClass} from '@angular/common';
 
 @Component({
   selector: 'app-cv-form',
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgClass
   ],
   templateUrl: './cv-form.component.html',
   standalone: true,
@@ -103,10 +105,13 @@ export class CvFormComponent implements OnInit{
         a.click();
         document.body.removeChild(a);
         window.URL.revokeObjectURL(url);
-        console.log("PDF generated successfully!");
+
+        this.okMessage = "PDF generated successfully!";
+        setTimeout(() => this.okMessage = undefined, 5000);
       },
       (error) => {
-        console.error("Error generating PDF:", error);
+        this.errorMessage = "Error generating PDF";
+        setTimeout(() => this.errorMessage = undefined, 5000);
       }
     );
   }

@@ -52,12 +52,12 @@
       </div>
     </form>
 
-    @if(errorMessage){
-      <p class="error-message">{{ errorMessage }}</p>
-    }
-
-    @if(okMessage){
-      <p class="message">{{ okMessage }}</p>
+    @if(errorMessage || okMessage){
+      <div class="fullscreen-message">
+        <div [ngClass]="{'error': errorMessage, 'success': okMessage}">
+          <p>{{ errorMessage || okMessage }}</p>
+        </div>
+      </div>
     }
 
   </div>
