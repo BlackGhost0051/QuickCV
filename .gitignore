@@ -54,3 +54,5 @@ Thumbs.db
 
 # Backend
 /Backend/api/lib/database/*
+
+*pdf
